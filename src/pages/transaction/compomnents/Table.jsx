@@ -2,12 +2,13 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatter } from "../../../utils/helper";
-import { MonthArr, paginationCount } from "../../../utils/constant";
+import { MonthArr, paginationCount, onSort } from "../../../utils/constant";
 import { Dropdown } from "../../../components/Dropdown";
 import Pagination from "../../../components/Pagination";
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTransaction } from "../../../Redux/ducks/transactionSlice";
+
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 // import { useTransactionData } from "../";
@@ -180,7 +181,6 @@ const Table = (props) => {
       // theme: "dark",
     });
   };
-
   return (
     <>
       <Toaster />
@@ -193,56 +193,19 @@ const Table = (props) => {
       ></input>
       <table>
         <thead>
-          <th
-            onClick={() => {
-              sorting("transactionDate");
-            }}
-          >
-            Transaction Date
-          </th>
-          <th
-            onClick={() => {
-              sorting("monthYear");
-            }}
-          >
-            Month Year
-          </th>
-          <th
-            onClick={() => {
-              sorting("transactionType");
-            }}
-          >
-            Transaction Type
-          </th>
-          <th
-            onClick={() => {
-              sorting("fromAccount");
-            }}
-          >
-            From Account
-          </th>
-          <th
-            onClick={() => {
-              sorting("toAccount");
-            }}
-          >
-            To Account
-          </th>
-          <th
-            onClick={() => {
-              sorting("transactionAmount");
-            }}
-          >
-            Amount
-          </th>
-          <th>Receipt</th>
-          <th
-            onClick={() => {
-              sorting("notes");
-            }}
-          >
-            Notes
-          </th>
+          {onSort?.map((a) => {
+            return a.title !== "Receipt" ? (
+              <th
+                onClick={() => {
+                  sorting(a.name);
+                }}
+              >
+                {a.title}
+              </th>
+            ) : (
+              <th>{a.title}</th>
+            );
+          })}
           <th>Edit</th>
           <th>Action</th>
           <th>Delete</th>
@@ -284,7 +247,6 @@ const Table = (props) => {
                     class="fas fa-trash-alt"
                     onClick={() => deleteData(transaction?.id)}
                   ></i>
-                 
                 </td>
               </tr>
             ))}

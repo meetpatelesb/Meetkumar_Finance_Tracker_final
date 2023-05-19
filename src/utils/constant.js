@@ -48,9 +48,43 @@ export const validFileExtensions = [
 export const userData = [
   {
     name: "meet",
-    id:1,
+    id: 1,
     email: "meet@gmail.com",
     password: "Meet@123",
+  },
+];
+export const onSort = [
+  {
+    name: "transactionDate",
+    title: "Transaction Date",
+  },
+  {
+    name: "monthYear",
+    title: "Month Year",
+  },
+  {
+    name: "transactionType",
+    title: "Transaction Type",
+  },
+  {
+    name: "fromAccount",
+    title: "From Account",
+  },
+  {
+    name: "toAccount",
+    title: "To Account",
+  },
+  {
+    name: "transactionAmount",
+    title: "Amount",
+  },
+  {
+    name: "Receipt",
+    title: "Receipt",
+  },
+  {
+    name: "notes",
+    title: "Notes",
   },
 ];
 
