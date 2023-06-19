@@ -128,11 +128,11 @@ const TransactionForm = () => {
   });
   // ......
 
-  for (let a in dummy[0]) {
-    if (dummy[0][a].value !== undefined) {
-      udata[a] = dummy[0][a].value;
-    }
-  }
+  // for (let a in dummy[0]) {
+  //   if (dummy[0][a].value !== undefined) {
+  //     udata[a] = dummy[0][a].value;
+  //   }
+  // }
 
   useEffect(() => {
     for (const key in updateData) {
